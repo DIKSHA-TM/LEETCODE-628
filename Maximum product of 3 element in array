@@ -1,0 +1,58 @@
+#include<stdio.h>
+#include<stdlib.h>
+void main()
+{
+    int n;
+    scanf("%d",&n);
+    
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d",&arr[i]);
+    }
+    int product;
+    int max;
+    if(n==3)
+    {
+    printf("%d",arr[0]*arr[1]*arr[2]);
+    exit(1);
+    }
+    for(int i=0;i<n;i++)
+    {
+       
+       for(int j=i+1;j<=i+2;j++)
+       {
+           product=arr[i];
+           if(j>=n)
+           {
+               product=product*arr[j-n];
+           }
+           else
+           {
+                product=product*arr[j];
+           }
+           for(int k=j+1;k<j+2;k++)
+           {
+               if(k>=n)
+               {
+                   product=product*arr[k-n];
+               }
+               else
+               {
+                   product=product*arr[k];
+               }
+               if(i==0 && j==1 && k==2)
+                {
+                    max=product;
+                }
+           }
+           
+            if(product>max)
+            {
+                max=product;
+            }
+       }
+      
+    }
+    printf("%d",max);
+}
